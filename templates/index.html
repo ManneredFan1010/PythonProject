@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Monte Carlo Stock Simulation</title>
+</head>
+<body>
+    <h1>Monte Carlo Stock Simulation</h1>
+    <form method="POST" action="/">
+        <label for="stock">Enter Stock Symbol:</label>
+        <input type="text" id="stock" name="stock" required>
+        <button type="submit">Run Simulation</button>
+    </form>
+    {% if stock %}
+        <h2>Results for {{ stock }}</h2>
+        {% if current_price %}
+            <p>Current Price: ${{ current_price }}</p>
+        {% endif %}
+        {% if monte_carlo_prediction %}
+            <p>Predicted Price After 1 Year (Monte Carlo): ${{ monte_carlo_prediction }}</p>
+        {% endif %}
+        {% if simulation_image %}
+            <img src="{{ simulation_image }}" alt="Monte Carlo Simulation Graph">
+        {% endif %}
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% endif %}
+    {% endif %}
+</body>
+</html>
